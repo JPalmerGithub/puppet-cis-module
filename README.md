@@ -1,4 +1,4 @@
-# CIS Hardening Module for Puppet
+### CIS Hardening Module for Puppet
 
 1. Download the module
 ```
