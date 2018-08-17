@@ -3,7 +3,7 @@
 1. Download puppet and git
 ```
 yum install -y epel-release
-yum install -y puppet git --enable-repo=epel
+yum install -y puppet git --enablerepo=epel
 ```
 2. Download the module
 ```
