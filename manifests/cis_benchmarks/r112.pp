@@ -14,33 +14,33 @@ class cis::cis_benchmarks::r112 {
   }
 
   mount { '/tmp':
-    device => '/dev/xvdb',
+    device => '/dev/xvdb9',
     options => 'nodev,nosuid,noexec'
   }
 
   mount { '/var':
-    device => '/dev/xvdc',
+    device => '/dev/xvdb5',
     options => 'nodev'
   }
 
   mount { '/var/log':
-    device => '/dev/xvdd',
+    device => '/dev/xvdb6',
     options => 'nodev'
   }
 
   mount { '/var/log/audit':
-    device => '/dev/xvde',
+    device => '/dev/xvdb7',
     options => 'nodev'
   }
 
   mount { '/home':
-    device => '/dev/xvdf',
+    device => '/dev/xvdb8',
     options => 'nodev'
   }
 
   mount { '/var/tmp':
-    device => '/dev/xvdg',
-    options => 'nodev,nosuid,noexec'
+    device => '/tmp',
+    options => 'nodev,nosuid,noexec,bind'
   }
     
   mount { '/dev/shm':
