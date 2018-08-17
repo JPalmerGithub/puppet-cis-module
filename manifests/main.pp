@@ -52,6 +52,7 @@ class cis::main {
   include cis::cis_benchmarks::r233
   include cis::cis_benchmarks::r235
   include cis::cis_benchmarks::r311_r332
+  # No need for TCP Wrappers
   include cis::cis_benchmarks::r341
   include cis::cis_benchmarks::r344
   include cis::cis_benchmarks::r345
