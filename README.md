@@ -1,5 +1,12 @@
 ### CIS Hardening Module for Puppet
 
+
+#### Assumptions
+ - Secondary EBS disk is in /dev/xvdb
+ - Partioning scheme is https://github.com/johnalvero/part-on-boot/blob/master/scheme.txt
+ If this is not the case, modify https://github.com/VoyagerInnovations/puppet-cis-module/blob/master/manifests/cis_benchmarks/r112.pp
+ 
+
 #### Using Git
 1. Download puppet and git
 ```
