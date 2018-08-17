@@ -22,7 +22,7 @@ yum install -y unzip puppet --enablerepo=epel
 ```
 curl -o /tmp/cis.zip https://codeload.github.com/VoyagerInnovations/puppet-cis-module/zip/master
 unzip /tmp/cis.zip -d /tmp/
-mkdir /etc/puppet/modules/cis && mv /tmp/xxx/puppet-cis-module-master/* $_
+mkdir /etc/puppet/modules/cis && mv /tmp/puppet-cis-module-master/* $_
 ```
 3. Apply
 ```
