@@ -6,7 +6,7 @@ class cis::main {
   include cis::cis_benchmarks::r1119
   include cis::cis_benchmarks::r123
   # we dont need AIDE, we use OSSEC
-  include cis::cis_benchmarks::r131
+  #include cis::cis_benchmarks::r131
   include cis::cis_benchmarks::r132
   include cis::cis_benchmarks::r141
   include cis::cis_benchmarks::r142
@@ -53,10 +53,11 @@ class cis::main {
   include cis::cis_benchmarks::r235
   include cis::cis_benchmarks::r311_r332
   # No need for TCP Wrappers
-  include cis::cis_benchmarks::r341
+  #include cis::cis_benchmarks::r341
   include cis::cis_benchmarks::r344
   include cis::cis_benchmarks::r345
-  include cis::cis_benchmarks::r361
+  #No need for IPtables
+  #include cis::cis_benchmarks::r361
 
   include cis::cis_benchmarks::r4112_r4113_r412
   include cis::cis_benchmarks::r413
