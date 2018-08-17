@@ -5,6 +5,7 @@ class cis::main {
   include cis::cis_benchmarks::r1118
   include cis::cis_benchmarks::r1119
   include cis::cis_benchmarks::r123
+  # we dont need AIDE, we use OSSEC
   include cis::cis_benchmarks::r131
   include cis::cis_benchmarks::r132
   include cis::cis_benchmarks::r141
