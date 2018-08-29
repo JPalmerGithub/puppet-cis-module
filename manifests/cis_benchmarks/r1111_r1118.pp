@@ -77,6 +77,17 @@ class cis::cis_benchmarks::r1111_r1118 {
     command => "echo install vfat /bin/true >> ${cis_file}",
     #unless => 'modprobe -n -v vfat | grep "install /bin/true" && lsmod | grep vfat',
     unless => 'modprobe -n -v vfat | grep "install /bin/true"',
-  } 
+  }
+
+
+  # 3.3.3 Disable IPv6
+
+  file_line { 'disable_ipv6':
+    line => 'options ipv6 disable=1',
+    path => "$cis_file",
+    match => '^options ipv6 disable',
+    replace => true,
+    require => File[$cis_file],
+  }
 
 }
