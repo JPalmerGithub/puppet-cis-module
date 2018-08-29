@@ -65,6 +65,9 @@ class cis::main {
   include cis::cis_benchmarks::r4211
   include cis::cis_benchmarks::r4213
 
+  # Don't install syslog-ng
+  #include cis::cis_benchmarks::r4221
+
   include cis::cis_benchmarks::r511
   include cis::cis_benchmarks::r512
   include cis::cis_benchmarks::r513
