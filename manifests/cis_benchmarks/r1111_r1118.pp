@@ -79,6 +79,12 @@ class cis::cis_benchmarks::r1111_r1118 {
     unless => 'modprobe -n -v vfat | grep "install /bin/true"',
   }
 
+  # 3.5.1 disable DCCP
+ 
+  exec { 'disable-dccp':
+    command => "echo install dccp /bin/true >> ${cis_file}",
+    unless => 'modprobe -n -v dccp | grep "install /bin/true"',
+  }
 
   # 3.3.3 Disable IPv6
 
