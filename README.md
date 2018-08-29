@@ -13,6 +13,7 @@ If this is not the case, modify https://github.com/VoyagerInnovations/puppet-cis
 ```
 yum install -y epel-release
 yum install -y puppet git --enablerepo=epel
+puppet module install puppetlabs-stdlib --version 5.0.0
 ```
 2. Download and install the module
 ```
