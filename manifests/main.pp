@@ -19,6 +19,7 @@ class cis::main {
   include cis::cis_benchmarks::r1615
   include cis::cis_benchmarks::r162
   include cis::cis_benchmarks::r1711
+  include cis::cis_benchmarks::r1713
 
   include cis::cis_benchmarks::r1715
   include cis::cis_benchmarks::r211
