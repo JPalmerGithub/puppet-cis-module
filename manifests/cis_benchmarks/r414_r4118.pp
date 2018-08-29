@@ -26,7 +26,7 @@ class cis::cis_benchmarks::r414_r4118 {
     }
   }
 
-  file { '/etc/audit/audit.rules':
+  file { '/etc/audit/rules.d/audit.rules':
     ensure => file,
     owner => 'root',
     group => 'root',
