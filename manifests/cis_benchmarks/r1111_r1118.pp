@@ -86,6 +86,24 @@ class cis::cis_benchmarks::r1111_r1118 {
     unless => 'modprobe -n -v dccp | grep "install /bin/true"',
   }
 
+  # 3.5.4 disable TIPC
+  exec { 'disable-tipc':
+    command => "echo install tipc /bin/true >> ${cis_file}",
+    unless => 'modprobe -n -v tipc | grep "install /bin/true"',
+  }
+
+  # 3.5.2
+  exec { 'disable-sctp':
+    command => "echo install sctp /bin/true >> ${cis_file}",
+    unless => 'modprobe -n -v sctp | grep "install /bin/true"',
+  }
+
+  # 3.5.3
+  exec { 'disable-rds':
+    command => "echo install rds /bin/true >> ${cis_file}",
+    unless => 'modprobe -n -v rds | grep "install /bin/true"',
+  }
+
   # 3.3.3 Disable IPv6
 
   file_line { 'disable_ipv6':
