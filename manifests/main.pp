@@ -57,8 +57,7 @@ class cis::main {
   #include cis::cis_benchmarks::r341
   include cis::cis_benchmarks::r344
   include cis::cis_benchmarks::r345
-  #No need for IPtables
-  #include cis::cis_benchmarks::r361
+  include cis::cis_benchmarks::r361
 
   include cis::cis_benchmarks::r4112_r4113_r412
   include cis::cis_benchmarks::r413
