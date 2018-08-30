@@ -63,6 +63,7 @@ class cis::main {
   include cis::cis_benchmarks::r4112_r4113_r412
   include cis::cis_benchmarks::r413
   include cis::cis_benchmarks::r414_r4118
+  include cis::cis_benchmarks::r424
   include cis::cis_benchmarks::r4211
   include cis::cis_benchmarks::r4213
 

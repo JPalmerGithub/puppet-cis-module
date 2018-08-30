@@ -1,11 +1,14 @@
 # Ensure permissions on /etc/group- are configured
 class cis::cis_benchmarks::r618 {
 
-  file { '/etc/group-':
-    ensure => file,
-    owner => 'root',
-    group => 'root',
-    mode => '0600'
+  exec { 'group-_ownership':
+    command => '/bin/chown root:root /etc/group-',
+    onlyif => '/bin/test ! $(/bin/stat -c %U%G /etc/group-) = rootroot',
+  }
+  
+  exec { 'group-_permission':
+    command => '/bin/chmod 600 /etc/group-',
+    onlyif => '/bin/test ! $(/bin/stat -c %a /etc/group-) = 600',
   }
 
 }
