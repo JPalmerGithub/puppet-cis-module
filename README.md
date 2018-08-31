@@ -26,6 +26,7 @@ Because the git package install a lot of dependencies
 ```
 yum install -y epel-release
 yum install -y unzip puppet --enablerepo=epel
+puppet module install puppetlabs-stdlib --version 5.0.0
 ```
 2. Download and install the module
 ```
