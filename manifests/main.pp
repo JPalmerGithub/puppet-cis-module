@@ -54,8 +54,9 @@ class cis::main {
   include cis::cis_benchmarks::r235
   include cis::cis_benchmarks::r311_r332
   include cis::cis_benchmarks::r341
-  include cis::cis_benchmarks::r344
-  include cis::cis_benchmarks::r345
+  include cis::cis_benchmarks::r343
+  #include cis::cis_benchmarks::r344
+  #include cis::cis_benchmarks::r345
   include cis::cis_benchmarks::r361
   include cis::cis_benchmarks::r363
   include cis::cis_benchmarks::r4112_r4113_r412
