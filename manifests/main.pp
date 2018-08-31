@@ -57,9 +57,8 @@ class cis::main {
   #include cis::cis_benchmarks::r341
   include cis::cis_benchmarks::r344
   include cis::cis_benchmarks::r345
-  # Wont do iptables for now
-  #include cis::cis_benchmarks::r361
-
+  include cis::cis_benchmarks::r361
+  include cis::cis_benchmarks::r363
   include cis::cis_benchmarks::r4112_r4113_r412
   include cis::cis_benchmarks::r413
   include cis::cis_benchmarks::r414_r4118
