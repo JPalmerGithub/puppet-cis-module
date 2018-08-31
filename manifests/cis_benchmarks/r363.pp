@@ -24,7 +24,7 @@ class cis::cis_benchmarks::r363 {
 
   exec { 'allow_port22':
     command => '/sbin/iptables -A INPUT -p TCP --dport 22 -m state --state NEW -j ACCEPT',
-    unless => '/sbin/iptables -S | /bin/grep "\-A INPUT -p TCP \-\-dport 22 \-m state \-\-state NEW \-j ACCEPT"',
+    unless => '/sbin/iptables -S | /bin/grep "\-A INPUT \-p tcp \-m tcp \-\-dport 22 \-m state \-\-state NEW \-j ACCEPT"',
     require => Package['iptables'],
     notify => Exec['save_iptables'],
   }
