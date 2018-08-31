@@ -26,7 +26,17 @@ class cis::cis_benchmarks::r414_r4118 {
     }
   }
 
-  file { '/etc/audit/rules.d/audit.rules':
+  if $osfamily == 'Redhat' and $operatingsystemmajrelease == '7' {
+    $auditrules_path = "/etc/audit/rules.d/audit.rules"
+  }
+  elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
+    $auditrules_path = "/etc/audit/audit.rules"
+  } else {
+    $auditrules_path = "/etc/audit/audit.rules"
+  }
+
+  file { 'audit_rules':
+    path => $auditrules_path,
     ensure => file,
     owner => 'root',
     group => 'root',
