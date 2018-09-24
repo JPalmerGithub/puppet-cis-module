@@ -25,10 +25,7 @@ class cis::cis_benchmarks::r2211 {
     require => Package['install_ntp'],
   }
 
-
-
-
-  service { 'httpd':
+  service { 'ntpd':
     ensure 		=> running,
     name 		=> ntpd,
     enable 		=> true,
