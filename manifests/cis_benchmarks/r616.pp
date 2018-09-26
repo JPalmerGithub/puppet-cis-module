@@ -1,11 +1,8 @@
 # Ensure permissions on /etc/passwd- are configured
 class cis::cis_benchmarks::r616 {
 
-  file { '/etc/passwd-':
-    ensure => file,
-    owner => 'root',
-    group => 'root',
-    mode => '0600'
+  exec { '/etc/passwd-_permission':
+    command => '/bin/chmod 600 /etc/passwd-',
+    onlyif => '/bin/test ! $(/bin/stat -c %a /etc/passwd-) = 600',
   }
-
 }
