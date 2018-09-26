@@ -19,6 +19,10 @@ puppet module install puppetlabs-stdlib --version 5.0.0
 ```
 git clone https://github.com/VoyagerInnovations/puppet-cis-module.git /etc/puppet/modules/cis
 ```
+3. Apply
+```
+puppet apply -e "Package { allow_virtual => false} include cis::main" 
+```
 
 #### Using curl
 Because the git package install a lot of dependencies
