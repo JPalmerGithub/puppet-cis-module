@@ -75,8 +75,7 @@ class cis::cis_benchmarks::r1111_r1118 {
 
   exec { 'disable-vfat':
     command => "echo install vfat /bin/true >> ${cis_file}",
-    #unless => 'modprobe -n -v vfat | grep "install /bin/true" && lsmod | grep vfat',
-    unless => 'modprobe -n -v vfat | grep "install /bin/true"',
+    unless => "grep 'install vfat /bin/true' ${cis_file}",
   }
 
   # 3.5.1 disable DCCP
