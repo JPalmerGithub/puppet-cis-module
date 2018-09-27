@@ -13,7 +13,7 @@ class cis::cis_benchmarks::r4112_r4113_r412 {
   service { 'auditd':
     ensure => running,
     enable => true,
-    restart => "systemctl restart auditd",
+    restart => "/sbin/service auditd restart",
     subscribe => File['/etc/audit/auditd.conf']
   }
 
