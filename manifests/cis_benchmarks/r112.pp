@@ -15,7 +15,8 @@ class cis::cis_benchmarks::r112 {
 
   mount { '/tmp':
     device => '/dev/xvdb9',
-    options => 'nodev,nosuid,noexec'
+    options => 'nodev,nosuid,noexec',
+    ensure => mounted,
   }
 
   mount { '/var':
@@ -58,8 +59,8 @@ class cis::cis_benchmarks::r112 {
 
   exec { 'mount_tmp':
     command => "/bin/true",
-    unless => "/bin/mount | /bin/grep tmp | /bin/grep noexec",
-    notify => Mount['/dev/shm'],
+    unless => "/bin/mount | /bin/grep /tmp | /bin/grep noexec",
+    notify => Mount['/tmp'],
   }
 
 }
