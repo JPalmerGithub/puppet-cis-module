@@ -21,27 +21,32 @@ class cis::cis_benchmarks::r112 {
 
   mount { '/var':
     device => '/dev/xvdb5',
-    options => 'nodev'
+    options => 'nodev',
+    ensure => mounted,
   }
 
   mount { '/var/log':
     device => '/dev/xvdb6',
-    options => 'nodev'
+    options => 'nodev',
+    ensure => mounted,
   }
 
   mount { '/var/log/audit':
     device => '/dev/xvdb7',
-    options => 'nodev'
+    options => 'nodev',
+    ensure => mounted,
   }
 
   mount { '/home':
     device => '/dev/xvdb8',
-    options => 'nodev'
+    options => 'nodev',
+    ensure => mounted,
   }
 
   mount { '/var/tmp':
     device => '/tmp',
-    options => 'nodev,nosuid,noexec,bind'
+    options => 'nodev,nosuid,noexec,bind',
+    ensure => mounted,
   }
     
   mount { '/dev/shm':
