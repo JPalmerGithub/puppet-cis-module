@@ -16,12 +16,22 @@
 
 class cis::cis_benchmarks::r521_r5216 {
 
+  if $osfamily == 'Redhat' and $operatingsystemmajrelease == '7' {
+    $sshd_config_path = "puppet:///modules/cis/sshd_config"
+  }
+  elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
+    $sshd_config_path = "puppet:///modules/cis/sshd_config_centos6"
+  } else {
+    $sshd_config_path = "puppet:///modules/cis/sshd_config_centos6"
+  }
+
+
   file { '/etc/ssh/sshd_config':
     ensure => file,
     owner => 'root',
     group => 'root',
     mode => '0600',
-    source => 'puppet:///modules/cis/sshd_config'
+    source => "$sshd_config_path",
   }
 
   service { 'sshd':
