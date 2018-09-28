@@ -13,7 +13,7 @@ class cis::cis_benchmarks::r618 {
   exec { '/etc/group-_permission':
     command => 'chmod 600 /etc/group-',
     onlyif => 'test ! $(/bin/stat -c %a /etc/group-) = 600',
-    require => File['/etc/security/pwquality.conf'],
+    #require => File['/etc/security/pwquality.conf'],
   }
 
 }
