@@ -1,14 +1,18 @@
 # Ensure permissions on /etc/group- are configured
 class cis::cis_benchmarks::r618 {
 
+  Exec {
+    path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+  }
+
   exec { '/etc/group-_ownership':
-    command => '/bin/chown root:root /etc/group-',
-    onlyif => '/bin/test ! $(/bin/stat -c %U%G /etc/group-) = rootroot',
+    command => 'chown root:root /etc/group-',
+    onlyif => 'test ! $(stat -c %U%G /etc/group-) = rootroot',
   }
   
   exec { '/etc/group-_permission':
-    command => '/bin/chmod 600 /etc/group-',
-    onlyif => '/bin/test ! $(/bin/stat -c %a /etc/group-) = 600',
+    command => 'chmod 600 /etc/group-',
+    onlyif => 'test ! $(/bin/stat -c %a /etc/group-) = 600',
     require => File['/etc/security/pwquality.conf'],
   }
 
