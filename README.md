@@ -8,11 +8,18 @@
 If this is not the case, modify https://github.com/VoyagerInnovations/puppet-cis-module/blob/master/manifests/cis_benchmarks/r112.pp
  
 
-#### Using Git
+#### Installing
 1. Download puppet and git
 ```
+# Centos 7
 yum install -y epel-release
-yum install -y puppet git --enablerepo=epel
+yum install -y git puppet --enablerepo=epel
+
+# Centos 6
+rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+yum install -y git puppet --enablerepo=puppetlabs-products
+
+# Centos 6/7
 puppet module install puppetlabs-stdlib --version 5.0.0
 ```
 2. Download and install the module
@@ -24,21 +31,4 @@ git clone https://github.com/VoyagerInnovations/puppet-cis-module.git /etc/puppe
 puppet apply -e "Package { allow_virtual => false} include cis::main" 
 ```
 
-#### Using curl
-Because the git package install a lot of dependencies
-1. Install puppet
-```
-yum install -y epel-release
-yum install -y unzip puppet --enablerepo=epel
-puppet module install puppetlabs-stdlib --version 5.0.0
-```
-2. Download and install the module
-```
-curl -o /tmp/cis.zip https://codeload.github.com/VoyagerInnovations/puppet-cis-module/zip/master
-unzip /tmp/cis.zip -d /tmp/
-mkdir /etc/puppet/modules/cis && mv /tmp/puppet-cis-module-master/* $_
-```
-3. Apply
-```
-puppet apply -e "Package { allow_virtual => false} include cis::main" 
-```
+
