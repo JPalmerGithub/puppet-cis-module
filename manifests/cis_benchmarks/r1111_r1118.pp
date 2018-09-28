@@ -12,7 +12,7 @@ class cis::cis_benchmarks::r1111_r1118 {
 
   Exec {
     user => 'root',
-    path => [ '/usr/sbin/', '/bin/', 'sbin' ]
+    path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
   }
 
   # 1.1.1.1 Disable cramfs filesystem
