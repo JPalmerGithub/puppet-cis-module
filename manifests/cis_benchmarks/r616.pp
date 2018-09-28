@@ -8,6 +8,6 @@ class cis::cis_benchmarks::r616 {
   exec { '/etc/passwd-_permission':
     command => 'chmod 600 /etc/passwd-',
     onlyif => 'test ! $(stat -c %a /etc/passwd-) = 600',
-    require => File['/etc/security/pwquality.conf'],
+    #require => File['/etc/security/pwquality.conf'],
   }
 }
