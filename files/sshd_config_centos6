@@ -157,7 +157,7 @@ Subsystem sftp  /usr/libexec/openssh/sftp-server
 # AllowTcpForwarding no
 # ForceCommand cvs server
 Ciphers aes256-ctr,aes192-ctr,aes128-ctr
-#MACs MACs hmac-sha2-256,hmac-sha2-512
+MACs hmac-sha2-512,hmac-sha2-256
 
 AuthorizedKeysCommand /usr/libexec/openssh/ssh-ldap-wrapper
 #AuthorizedKeysCommandUser nobody
