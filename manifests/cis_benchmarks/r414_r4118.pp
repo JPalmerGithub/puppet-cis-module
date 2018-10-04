@@ -45,4 +45,12 @@ class cis::cis_benchmarks::r414_r4118 {
     notify => Service['auditd']
   }
 
+  file_line { 'auditd_enable_rulesd':
+    line => 'USE_AUGENRULES="yes"',
+    path => "/etc/sysconfig/auditd",
+    match => '^USE_AUGENRULES="no"',
+    replace => true,
+  }
+
+
 }
