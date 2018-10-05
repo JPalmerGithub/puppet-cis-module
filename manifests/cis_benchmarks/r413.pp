@@ -30,13 +30,21 @@ class cis::cis_benchmarks::r413 {
 
   } elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
 
-    file_line { 'enable_audit_before_auditd':
+    file_line { 'enable_audit_before_auditd_sysconfig':
       line => 'GRUB_CMDLINE_LINUX="audit=1 console=tty0 crashkernel=auto console=ttyS0,115200"',
       path => "$grub_config_path",
       match => '^GRUB_CMDLINE_LINUX=',
       replace => true,
       ensure   => present,
     } 
+
+    exec { 'enable_audit_before_auditd_etc':
+      command => "sed -i 's/ ro / ro audit=1 /g' /etc/grub.conf ",
+      path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      unless => "grep -P -o ' ro audit=1 ' /etc/grub.conf",
+    }
+
+
 
   }
 
