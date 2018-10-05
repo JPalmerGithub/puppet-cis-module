@@ -42,7 +42,6 @@ class cis::cis_benchmarks::r414_r4118 {
     group => 'root',
     mode => '0640',
     source => $content_source,
-#    notify => Service['auditd'],
     require => File['/etc/audit/auditd.conf'],
   }
 
@@ -53,6 +52,7 @@ class cis::cis_benchmarks::r414_r4118 {
       path => "/etc/sysconfig/auditd",
       match => '^USE_AUGENRULES="no"',
       replace => true,
+      require => Exec['auditd_privileged_rules'],
     }
   }
 
