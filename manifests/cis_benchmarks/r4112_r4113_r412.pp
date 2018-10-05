@@ -9,10 +9,27 @@ class cis::cis_benchmarks::r4112_r4113_r412 {
     source => 'puppet:///modules/cis/audit/auditd.conf',
   }
 
-  exec { 'auditd_privileged_rules':
-    command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
-    path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
-    require => File['audit_rules'],
+  if $osfamily == 'Redhat' and $operatingsystemmajrelease == '7' {
+    exec { 'auditd_privileged_rules':
+      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
+      path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      require => File['audit_rules'],
+      notify => Service[auditd],
+    }
+  }
+  elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
+    exec { 'auditd_privileged_rules':
+      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
+      path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      require => File['audit_rules'],
+    }
+  } else {
+    exec { 'auditd_privileged_rules':
+      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
+      path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      require => File['audit_rules'],
+      notify => Service[auditd],
+    }
   }
 
   service { 'auditd':

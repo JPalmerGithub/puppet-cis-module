@@ -53,6 +53,7 @@ class cis::cis_benchmarks::r414_r4118 {
       match => '^USE_AUGENRULES="no"',
       replace => true,
       require => Exec['auditd_privileged_rules'],
+      notify => Service[auditd],
     }
   }
 
