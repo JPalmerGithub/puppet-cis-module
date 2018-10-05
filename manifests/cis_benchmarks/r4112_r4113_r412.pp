@@ -7,7 +7,7 @@ class cis::cis_benchmarks::r4112_r4113_r412 {
     group => 'root',
     mode => '0640',
     source => 'puppet:///modules/cis/audit/auditd.conf',
-    require => File_line['auditd_enable_rulesd'],
+    require => [File_line['auditd_enable_rulesd'], Exec['auditd_privileged_rules']],
     notify => Service['auditd']
   }
 

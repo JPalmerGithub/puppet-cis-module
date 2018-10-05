@@ -51,7 +51,6 @@ class cis::cis_benchmarks::r414_r4118 {
     path => "/etc/sysconfig/auditd",
     match => '^USE_AUGENRULES="no"',
     replace => true,
-    require => File['/etc/audit/auditd.conf'],
   }
 
 
