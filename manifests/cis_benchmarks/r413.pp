@@ -39,9 +39,9 @@ class cis::cis_benchmarks::r413 {
     } 
 
     exec { 'enable_audit_before_auditd_etc':
-      command => "sed -i 's/ ro / ro audit=1 /g' /etc/grub.conf ",
+      command => "sed -i 's/ ro / ro audit=1 /g' /boot/grub/grub.conf ",
       path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
-      unless => "grep -P -o ' ro audit=1 ' /etc/grub.conf",
+      unless => "grep -P -o ' ro audit=1 ' /boot/grub/grub.conf",
     }
 
 
