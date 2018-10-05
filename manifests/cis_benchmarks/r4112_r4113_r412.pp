@@ -16,7 +16,6 @@ class cis::cis_benchmarks::r4112_r4113_r412 {
     require => File['audit_rules'],
   }
 
-
   service { 'auditd':
     ensure => running,
     enable => true,

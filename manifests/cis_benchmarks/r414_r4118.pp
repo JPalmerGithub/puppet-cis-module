@@ -42,7 +42,8 @@ class cis::cis_benchmarks::r414_r4118 {
     group => 'root',
     mode => '0640',
     source => $content_source,
-    notify => Service['auditd']
+#    notify => Service['auditd'],
+    require => File['/etc/audit/auditd.conf'],
   }
 
   file_line { 'auditd_enable_rulesd':
