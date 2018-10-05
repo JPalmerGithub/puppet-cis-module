@@ -43,15 +43,17 @@ class cis::cis_benchmarks::r414_r4118 {
     mode => '0640',
     source => $content_source,
 #    notify => Service['auditd'],
-    require => File_line['auditd_enable_rulesd'],
+    require => File['/etc/audit/auditd.conf'],
   }
 
-  file_line { 'auditd_enable_rulesd':
-    line => 'USE_AUGENRULES="yes"',
-    path => "/etc/sysconfig/auditd",
-    match => '^USE_AUGENRULES="no"',
-    replace => true,
-  }
+  if $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
 
+    file_line { 'auditd_enable_rulesd':
+      line => 'USE_AUGENRULES="yes"',
+      path => "/etc/sysconfig/auditd",
+      match => '^USE_AUGENRULES="no"',
+      replace => true,
+    }
+  }
 
 }
