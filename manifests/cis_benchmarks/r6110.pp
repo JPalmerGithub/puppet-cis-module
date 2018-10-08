@@ -13,11 +13,15 @@ class cis::cis_benchmarks::r6110 {
     command => "df --local -P | awk {'if (NR!=1) print \$6'} | xargs -I '{}' find '{}' -xdev -type f -perm -0002 > /var/log/cis/world_writable_files.log",
     user => 'root',
     onlyif => "df --local -P | awk {'if (NR!=1) print \$6'} | xargs -I '{}' find '{}' -xdev -type f -perm -0002 | grep /",
-    require => File['/var/log/cis']
+    require => File['/var/log/cis'],
+    notify => Exec['check-world-writable-files-result'],
   }
 
-  notify { 'check-world-writable-files-result':
-    message => 'Check /var/log/cis/world_writable_files.log for world writable files.'
+  exec { 'check-world-writable-files-result':
+    path => '/bin',
+    command => 'echo Check /var/log/cis/world_writable_files.log for world writable files.',
+    logoutput => true,
+    refreshonly => true,
   }
 
 }

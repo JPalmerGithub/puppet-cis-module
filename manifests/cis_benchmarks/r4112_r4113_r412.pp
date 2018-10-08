@@ -11,22 +11,25 @@ class cis::cis_benchmarks::r4112_r4113_r412 {
 
   if $osfamily == 'Redhat' and $operatingsystemmajrelease == '7' {
     exec { 'auditd_privileged_rules':
-      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
+      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
       path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      onlyif => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }\' > /tmp/privileged.rules ; ! diff /tmp/privileged.rules /etc/audit/rules.d/privileged.rules &&  rm -f /tmp/privileged.rules',
       require => File['audit_rules'],
       notify => Service[auditd],
     }
   }
   elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
     exec { 'auditd_privileged_rules':
-      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
+      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
       path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      onlyif => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }\' > /tmp/privileged.rules ; ! diff /tmp/privileged.rules /etc/audit/rules.d/privileged.rules &&  rm -f /tmp/privileged.rules',
       require => File['audit_rules'],
     }
   } else {
     exec { 'auditd_privileged_rules':
-      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
+      command => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }\' > /etc/audit/rules.d/privileged.rules',
       path => "/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin",
+      onlyif => 'find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | awk \'{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged" }\' > /tmp/privileged.rules ; ! diff /tmp/privileged.rules /etc/audit/rules.d/privileged.rules &&  rm -f /tmp/privileged.rules',
       require => File['audit_rules'],
       notify => Service[auditd],
     }
