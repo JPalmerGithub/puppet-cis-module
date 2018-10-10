@@ -1,7 +1,11 @@
 class cis::main {
   
-  include cis::cis_benchmarks::r1111_r1118
-  include cis::cis_benchmarks::r112
+#  include cis::cis_benchmarks::r1111_r1118
+#  include cis::cis_benchmarks::r112
+
+  class {'cis::cis_benchmarks::r1111_r1118':} -> 
+  class {'cis::cis_benchmarks::r112':}
+
   include cis::cis_benchmarks::r1118
   include cis::cis_benchmarks::r1119
   include cis::cis_benchmarks::r123
