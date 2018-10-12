@@ -18,7 +18,17 @@ class cis::cis_benchmarks::r414_r4118 {
 
   case $::hardwaremodel {
     'x86_64': {
-      $content_source = 'puppet:///modules/cis/audit/audit.rules.64'
+      #$content_source = 'puppet:///modules/cis/audit/audit.rules.64'
+
+      if $osfamily == 'Redhat' and $operatingsystemmajrelease == '7' {
+        $content_source = 'puppet:///modules/cis/audit/audit.rules.64'
+      }
+      elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
+        $content_source = 'puppet:///modules/cis/audit/audit.rules.64.centos6'
+      } else {
+        $content_source = 'puppet:///modules/cis/audit/audit.rules.64'
+      }
+
     }
 
     default: {
@@ -26,14 +36,7 @@ class cis::cis_benchmarks::r414_r4118 {
     }
   }
 
-  if $osfamily == 'Redhat' and $operatingsystemmajrelease == '7' {
-    $auditrules_path = "/etc/audit/rules.d/audit.rules"
-  }
-  elsif $osfamily == 'Redhat' and $operatingsystemmajrelease == '6' {
-    $auditrules_path = "/etc/audit/rules.d/audit.rules"
-  } else {
-    $auditrules_path = "/etc/audit/rules.d/audit.rules"
-  }
+  $auditrules_path = "/etc/audit/rules.d/audit.rules"
 
   file { 'audit_rules':
     path => $auditrules_path,
