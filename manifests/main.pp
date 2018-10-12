@@ -84,7 +84,8 @@ class cis::main {
 
   include cis::cis_benchmarks::r521_r5216
 
-  include cis::cis_benchmarks::r531_r534
+  # Already defined below
+  #include cis::cis_benchmarks::r531_r534
   include cis::cis_benchmarks::r5411_r5413
   include cis::cis_benchmarks::r5414
   include cis::cis_benchmarks::r542
@@ -98,10 +99,14 @@ class cis::main {
   include cis::cis_benchmarks::r613
   include cis::cis_benchmarks::r614
   include cis::cis_benchmarks::r615
-  include cis::cis_benchmarks::r616
-  include cis::cis_benchmarks::r617
-  include cis::cis_benchmarks::r618
-  include cis::cis_benchmarks::r619
+
+
+  ###
+  class { 'cis::cis_benchmarks::r531_r534': } ->
+  class { 'cis::cis_benchmarks::r616': } ->
+  class { 'cis::cis_benchmarks::r617': } ->
+  class { 'cis::cis_benchmarks::r618': } ->
+  class { 'cis::cis_benchmarks::r619': }
   include cis::cis_benchmarks::r621
   include cis::cis_benchmarks::r622
   include cis::cis_benchmarks::r623
