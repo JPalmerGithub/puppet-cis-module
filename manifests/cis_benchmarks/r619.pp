@@ -7,7 +7,7 @@ class cis::cis_benchmarks::r619 {
   
   exec { '/etc/gshadow-_permission':
     command => 'chmod 600 /etc/gshadow-',
-    onlyif => 'test ! $(/bin/stat -c %a /etc/gshadow-) = 600',
+    onlyif => 'test ! $(stat -c %a /etc/gshadow-) = 600',
     #require => File['/etc/security/pwquality.conf'],
   }
 

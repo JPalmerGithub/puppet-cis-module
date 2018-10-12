@@ -106,7 +106,7 @@ class cis::main {
   class { 'cis::cis_benchmarks::r616': } ->
   class { 'cis::cis_benchmarks::r617': } ->
   class { 'cis::cis_benchmarks::r618': } ->
-  class { 'cis::cis_benchmarks::r619': }
+  class { 'cis::cis_benchmarks::r619': } 
   include cis::cis_benchmarks::r621
   include cis::cis_benchmarks::r622
   include cis::cis_benchmarks::r623
